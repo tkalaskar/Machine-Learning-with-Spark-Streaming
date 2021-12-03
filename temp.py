@@ -20,7 +20,7 @@ if __name__ == "__main__":
 
 	word=lines.flatMap(lambda line: line.split("\n")
 
-	def cnf(rd):
+	def readdata(rd):
 		f0=[]
 		f1=[]
 		#print(rd)
@@ -59,4 +59,12 @@ if __name__ == "__main__":
         			filtered_sentence.append(w)
 
 
+
+	rdd=word.foreachRDD(readdata)
+	#rdd=word.map(lambda x: json.loads(x))	
+	#r=json.loads(lines)
+	print("new batch")
+	ssc.start()
+	ssc.awaitTermination()
+	ssc.stop()
 
